@@ -1,0 +1,12 @@
+# Python temporary files
+__pycache__/
+*.py[cod]
+*.venv
+venv/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Large raw experimental logs (keep cleaned dataset CSVs tracked in /data)
+*.log
