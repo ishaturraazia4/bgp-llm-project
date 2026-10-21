@@ -1,0 +1,38 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "BGP Misconfiguration Scenario Schema",
+  "type": "object",
+  "properties": {
+    "scenario_id": {
+      "type": "string",
+      "description": "Unique identifier, e.g., F1_001, benign_002"
+    },
+    "fault_class": {
+      "type": "string",
+      "enum": ["F1", "F2", "F3", "benign"],
+      "description": "F1: Neighbor ASN mismatch, F2: Accidental prefix filtering, F3: Export-policy violation, benign: legitimate change"
+    },
+    "target_router": {
+      "type": "string",
+      "description": "The router being mutated, e.g., r1, r2, r3"
+    },
+    "config_change": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Bounded FRR configuration lines to apply/mutate"
+    },
+    "claimed_effect": {
+      "type": "string",
+      "description": "One-sentence description of the intended outcome"
+    },
+    "expected_observations": {
+      "type": "object",
+      "properties": {
+        "command": { "type": "string" },
+        "expected": { "type": "string" }
+      },
+      "required": ["command", "expected"]
+    }
+  },
+  "required": ["scenario_id", "fault_class", "target_router", "config_change", "claimed_effect", "expected_observations"]
+}
