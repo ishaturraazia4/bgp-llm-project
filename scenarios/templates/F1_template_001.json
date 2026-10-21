@@ -1,0 +1,15 @@
+{
+  "scenario_id": "F1_template_001",
+  "fault_class": "F1",
+  "target_router": "r2",
+  "config_change": [
+    "router bgp 200",
+    "no neighbor 192.168.12.1 remote-as 100",
+    "neighbor 192.168.12.1 remote-as 999"
+  ],
+  "claimed_effect": "Changing remote-as to 999 on r2 breaks the BGP session with r1 due to ASN mismatch.",
+  "expected_observations": {
+    "command": "vtysh -c \"show bgp summary\"",
+    "expected": "Active"
+  }
+}

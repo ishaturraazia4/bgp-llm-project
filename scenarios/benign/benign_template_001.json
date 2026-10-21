@@ -1,0 +1,14 @@
+{
+  "scenario_id": "benign_template_001",
+  "fault_class": "benign",
+  "target_router": "r2",
+  "config_change": [
+    "router bgp 200",
+    "bgp router-id 2.2.2.2"
+  ],
+  "claimed_effect": "Setting an explicit router ID on r2 is a benign maintenance update that maintains session state.",
+  "expected_observations": {
+    "command": "vtysh -c \"show bgp summary\"",
+    "expected": "Established"
+  }
+}
