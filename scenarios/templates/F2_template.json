@@ -1,0 +1,10 @@
+{
+  "fault_class": "F2",
+  "router": "r2",
+  "config_change": "router bgp 200\n address-family ipv4 unicast\n  neighbor 192.168.1.1 prefix-list BLOCK_PREFIX in\n exit-address-family\nexit\nip prefix-list BLOCK_PREFIX deny 10.100.0.0/24\nip prefix-list BLOCK_PREFIX permit any",
+  "claimed_effect": "An unintended prefix filter blocks a legitimate route from being received.",
+  "expected_observations": {
+    "command": "show bgp ipv4 unicast",
+    "expected": "prefix 10.100.0.0/24 absent"
+  }
+}

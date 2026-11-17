@@ -1,0 +1,10 @@
+{
+  "fault_class": "F3",
+  "router": "Customer-X",
+  "config_change": "router bgp 65000\n address-family ipv4 unicast\n  no neighbor Provider-B route-map BLOCK_TRANSIT out\n exit-address-family\nexit",
+  "claimed_effect": "Removed outbound filter, causing Provider-A's prefixes to be exported to Provider-B.",
+  "expected_observations": {
+    "command": "show bgp ipv4 unicast",
+    "expected": "prefix from Provider-A present at Provider-B"
+  }
+}

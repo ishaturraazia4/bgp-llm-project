@@ -1,0 +1,10 @@
+{
+  "fault_class": "F1",
+  "router": "r2",
+  "config_change": "router bgp 200\n no neighbor 192.168.1.1 remote-as 100\n neighbor 192.168.1.1 remote-as 999\nexit",
+  "claimed_effect": "Neighbor ASN mismatch causing the BGP session to fail establishment.",
+  "expected_observations": {
+    "command": "show bgp summary",
+    "expected": "session r1 down"
+  }
+}

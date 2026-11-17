@@ -1,0 +1,10 @@
+{
+  "fault_class": "benign",
+  "router": "r2",
+  "config_change": "router bgp 200\n address-family ipv4 unicast\n  network 10.200.0.0/24\n exit-address-family\nexit",
+  "claimed_effect": "Standard operational change to announce a new legitimate prefix.",
+  "expected_observations": {
+    "command": "show bgp ipv4 unicast",
+    "expected": "prefix 10.200.0.0/24 present"
+  }
+}
